@@ -238,3 +238,31 @@ h1 .animated-star {
     color: initial;
 }
 /* end project container rules */
+
+/* Interactive Skills Badges */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+}
+
+.skill-badge {
+    background-color: var(--card-bg);
+    color: var(--text-ink);
+    border: 1px solid var(--card-border);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-badge:hover {
+    border-color: #C4FFF9;
+    color: #C4FFF9;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(196, 255, 249, 0.1);
+}

@@ -1,10 +1,11 @@
 /* Global rules */
 :root {
-  --bg-canvas: #F8FAFC;
-  --text-ink: #334155;
-  --text-muted: #64748B;
-  --card-bg: #FFFFFF;
-  --card-border: #E2E8F0;
+  /* Dark Canvas Palette */
+  --bg-canvas: #0F172A; /* Deep, calm slate */
+  --text-ink: #F8FAFC; /* Crisp, off-white text */
+  --text-muted: #94A3B8; /* Muted gray for paragraphs */
+  --card-bg: #1E293B; /* Slightly elevated dark background for cards */
+  --card-border: #334155;
   --opal-gradient: linear-gradient(135deg, #FFD1FF 0%, #E0E7FF 50%, #C4FFF9 100%);
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 } 
@@ -24,262 +25,230 @@ body {
     max-width: 1200px;
 }
 
+::selection {
+    color: var(--bg-canvas); 
+    background: #C4FFF9; /* Soft mint selection color to match the gradient */
+}
+
 h1 {
     font-weight: normal;
     margin: auto;
-    background: #fff;
     line-height: 2.5em;
+    /* Removed the problematic background: #fff; */
 }
 
 main.wrapper {
-    background-color: transparent; /* Removing the stark white background */
+    background-color: transparent; 
     overflow: auto;
 }
 
 p {
-    margin: 1em; /* Top Right Bottom Left (TRBL) */
+    margin: 1em; 
 }
 
-h2,h3 {
+h2, h3 {
     font-weight: normal;
     margin-left: 1em;
     line-height: 1em;
 }
 
 a {
-    color:darkcyan;
+    color: #C4FFF9; /* Soft mint for standard links */
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 a:hover {
-    color: whitesmoke;
-    background-color: darkcyan;
+    color: #FFD1FF; /* Shifts to pastel pink on hover */
     text-decoration: none;
+    background-color: transparent;
 }
 
 footer {
     clear: both;
     text-align: center;
     padding: 1em;
+    color: var(--text-muted);
 }
-
-/* end global rules */
 
 /* Responsive rules */
 
 /* DESKTOP */
 @media all and (min-width:1200px) {
-    main.wrapper {
-        width: 80%;
-        margin: auto;
-    }
-    
-    h1 {
-        width: 79%;
-        padding-left: 1%;
-    }
-    
-    picture.profile img {
-        width: 50%;
-        float: left;
-        margin-right: 2em;
-    }
-    
+    main.wrapper { width: 80%; margin: auto; }
+    h1 { width: 79%; padding-left: 1%; }
+    picture.profile img { width: 50%; float: left; margin-right: 2em; }
 }
 
 /* TABLET */
 @media all and (min-width:501px) and (max-width:1199px) {
-    main.wrapper {
-        width: 90%;
-        margin: auto;
-    }
-    
-    h1 {
-        width: 89%;
-        padding-left: 1%;
-    }
-    
-    picture.profile img {
-        width: 50%;
-        float: right;
-        margin-left: 1em;
-    }
-
+    main.wrapper { width: 90%; margin: auto; }
+    h1 { width: 89%; padding-left: 1%; }
+    picture.profile img { width: 50%; float: right; margin-left: 1em; }
 }
 
 /* PHONE */
 @media all and (max-width:500px) {
-    main.wrapper {
-        width: 100%;
-    }
-    
-    h1 {
-        width: 99%;
-        padding-left: 1%;
-    }
-    
-    picture.profile img {
-        width: 100%;
-    }
-    
+    main.wrapper { width: 100%; }
+    h1 { width: 99%; padding-left: 1%; }
+    picture.profile img { width: 100%; }
 }
 
 /* start project container rules */
   
 .projects-container {
-    max-width: 900px;  /* Keeps things readable on desktop */
+    max-width: 900px;  
     margin: 0 auto;
     padding: 20px;
-  }
+}
   
-  /* The Main Project Card Wrapper */
-  .project-card {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 30px;
-  position: relative;
-  background-color: transparent; 
-  border-radius: 12px; 
-  padding: 24px;
-  margin-bottom: 30px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
-  z-index: 1;
-  border: none; /* Removing standard border to use pseudo-elements */
+/* The Main Project Card Wrapper */
+.project-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    background-color: transparent; 
+    border-radius: 12px; 
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2); 
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    z-index: 1;
+    border: none; 
 }
 
-project-card::before {
-  content: "";
-  position: absolute;
-  top: -2px; left: -2px; right: -2px; bottom: -2px;
-  background: var(--opal-gradient);
-  border-radius: 14px; 
-  z-index: -2;
-  opacity: 0;
-  transition: opacity var(--transition-smooth);
+/* FIXED: Added the missing dot here! */
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: var(--opal-gradient);
+    border-radius: 14px; 
+    z-index: -2;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
 }
 
 .project-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  z-index: -1;
-  border: 1px solid var(--card-border);
-  transition: border-color var(--transition-smooth);
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    z-index: -1;
+    border: 1px solid var(--card-border);
+    transition: border-color var(--transition-smooth);
 }
   
-  .project-card:hover {
-  transform: translateY(-4px); 
-  box-shadow: 0 20px 25px -5px rgba(51, 65, 85, 0.1); 
+.project-card:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4); 
 }
 
 .project-card:hover::before {
-  opacity: 1; 
+    opacity: 1; 
 }
 
 .project-card:hover::after {
-  border-color: transparent;
+    border-color: transparent;
 }
 
 .project-image, .project-content {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
 }
   
-  /* The Magic Mirror: Automatically alternate left/right layout */
-  .project-card:nth-child(even) {
-    flex-direction: row-reverse; /* Flips the order for every second card */
-  }
+/* The Magic Mirror: Automatically alternate left/right layout */
+.project-card:nth-child(even) {
+    flex-direction: row-reverse; 
+}
   
-  /* Image Control Group */
-  .project-image {
-    flex-shrink: 0; /* Prevents text from squeezing the image container */
-  }
+/* Image Control Group */
+.project-image {
+    flex-shrink: 0; 
+}
   
-  .project-image img {
+.project-image img {
     width: 150px;
     height: 150px;
-    object-fit: cover; /* Forces screenshots to crop nicely instead of squishing */
+    object-fit: cover; 
     border-radius: 8px;
-    border: 1px solid #cbd5e1;
-  }
+    border: 1px solid var(--card-border);
+}
   
-  /* Content & CTA Link Elements */
-  .project-content {
+/* Content & CTA Link Elements */
+.project-content {
     flex-grow: 1;
-  }
+}
   
-  .project-content h2 {
+.project-content h2 {
     margin-top: 0;
-    color: #1e293b;
-  }
+    color: var(--text-ink); 
+}
   
-  .project-links {
+.project-links {
     margin-top: 20px;
     display: flex;
     gap: 12px;
-  }
+}
   
-  /* Flexible, clean Button styles */
-  .btn {
+/* Flexible, clean Button styles */
+.btn {
     display: inline-block;
     text-decoration: none;
     padding: 8px 16px;
     border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: background-color 0.2s;
-  }
-  
-  .demo-btn {
-  background-color: var(--text-ink);
-  color: #ffffff;
+    transition: background-color 0.2s, color 0.2s;
 }
   
-  .demo-btn:hover {
-  background-color: var(--text-muted);
+.demo-btn {
+    background-color: var(--text-ink);
+    color: var(--bg-canvas); /* Inverted for high contrast */
 }
   
-  .repo-btn {
-  background-color: #f1f5f9;
-  color: var(--text-ink);
-  border: 1px solid var(--card-border);
+.demo-btn:hover {
+    background-color: var(--text-muted);
+    color: var(--bg-canvas);
 }
   
-  .repo-btn:hover {
-  background-color: #e2e8f0;
-  color: var(--text-ink);
+.repo-btn {
+    background-color: var(--card-bg);
+    color: var(--text-ink);
+    border: 1px solid var(--card-border);
 }
   
-  /* Responsive Overrides: If screen is small, stack everything vertically */
-  @media (max-width: 650px) {
+.repo-btn:hover {
+    background-color: var(--card-border);
+    color: var(--text-ink);
+}
+  
+/* Responsive Overrides */
+@media (max-width: 650px) {
     .project-card, 
     .project-card:nth-child(even) {
-      flex-direction: column;
-      text-align: center;
+        flex-direction: column;
+        text-align: center;
     }
-    
     .project-links {
-      justify-content: center;
+        justify-content: center;
     }
-  }
+}
 
-  h1, .subheader {
+h1, .subheader {
     background: var(--opal-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
     display: inline-block;
-    text-shadow: 0px 2px 10px rgba(224, 231, 255, 0.4);
 }
 
 h1 .animated-star {
     -webkit-text-fill-color: initial;
     color: initial;
 }
-
 /* end project container rules */

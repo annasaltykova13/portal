@@ -1,10 +1,9 @@
 /* Global rules */
 :root {
-  /* Dark Canvas Palette */
-  --bg-canvas: #0F172A; /* Deep, calm slate */
-  --text-ink: #F8FAFC; /* Crisp, off-white text */
-  --text-muted: #94A3B8; /* Muted gray for paragraphs */
-  --card-bg: #1E293B; /* Slightly elevated dark background for cards */
+  --bg-canvas: #0F172A; 
+  --text-ink: #F8FAFC; 
+  --text-muted: #94A3B8; 
+  --card-bg: #1E293B; 
   --card-border: #334155;
   --opal-gradient: linear-gradient(135deg, #FFD1FF 0%, #E0E7FF 50%, #C4FFF9 100%);
   --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -27,14 +26,13 @@ body {
 
 ::selection {
     color: var(--bg-canvas); 
-    background: #C4FFF9; /* Soft mint selection color to match the gradient */
+    background: #C4FFF9; 
 }
 
 h1 {
     font-weight: normal;
     margin: auto;
     line-height: 2.5em;
-    /* Removed the problematic background: #fff; */
 }
 
 main.wrapper {
@@ -53,13 +51,13 @@ h2, h3 {
 }
 
 a {
-    color: #C4FFF9; /* Soft mint for standard links */
+    color: #C4FFF9; 
     text-decoration: none;
     transition: color 0.2s;
 }
 
 a:hover {
-    color: #FFD1FF; /* Shifts to pastel pink on hover */
+    color: #FFD1FF; 
     text-decoration: none;
     background-color: transparent;
 }
@@ -72,22 +70,18 @@ footer {
 }
 
 /* Responsive rules */
-
-/* DESKTOP */
 @media all and (min-width:1200px) {
     main.wrapper { width: 80%; margin: auto; }
     h1 { width: 79%; padding-left: 1%; }
     picture.profile img { width: 50%; float: left; margin-right: 2em; }
 }
 
-/* TABLET */
 @media all and (min-width:501px) and (max-width:1199px) {
     main.wrapper { width: 90%; margin: auto; }
     h1 { width: 89%; padding-left: 1%; }
     picture.profile img { width: 50%; float: right; margin-left: 1em; }
 }
 
-/* PHONE */
 @media all and (max-width:500px) {
     main.wrapper { width: 100%; }
     h1 { width: 99%; padding-left: 1%; }
@@ -95,14 +89,12 @@ footer {
 }
 
 /* start project container rules */
-  
 .projects-container {
     max-width: 900px;  
     margin: 0 auto;
     padding: 20px;
 }
   
-/* The Main Project Card Wrapper */
 .project-card {
     display: flex;
     flex-direction: row;
@@ -119,7 +111,6 @@ footer {
     border: none; 
 }
 
-/* FIXED: Added the missing dot here! */
 .project-card::before {
     content: "";
     position: absolute;
@@ -160,12 +151,10 @@ footer {
     z-index: 2;
 }
   
-/* The Magic Mirror: Automatically alternate left/right layout */
 .project-card:nth-child(even) {
     flex-direction: row-reverse; 
 }
   
-/* Image Control Group */
 .project-image {
     flex-shrink: 0; 
 }
@@ -178,7 +167,6 @@ footer {
     border: 1px solid var(--card-border);
 }
   
-/* Content & CTA Link Elements */
 .project-content {
     flex-grow: 1;
 }
@@ -194,7 +182,6 @@ footer {
     gap: 12px;
 }
   
-/* Flexible, clean Button styles */
 .btn {
     display: inline-block;
     text-decoration: none;
@@ -207,7 +194,7 @@ footer {
   
 .demo-btn {
     background-color: var(--text-ink);
-    color: var(--bg-canvas); /* Inverted for high contrast */
+    color: var(--bg-canvas); 
 }
   
 .demo-btn:hover {
@@ -226,7 +213,6 @@ footer {
     color: var(--text-ink);
 }
   
-/* Responsive Overrides */
 @media (max-width: 650px) {
     .project-card, 
     .project-card:nth-child(even) {
